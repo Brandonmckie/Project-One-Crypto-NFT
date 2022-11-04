@@ -1,23 +1,16 @@
 var tableBodyEl = document.querySelector('tbody')
-function getBinanceDaily() {
-    fetch("https://api2.binance.com/api/v3/ticker/24hr").then((response)=>{
-        if(!response.ok){
-            console.log(response)
-            document.write('response is not ok')
-        }
-        return response.json()
-}).then((data) => {
-        console.log(data[0])
+$.get("https://api2.binance.com/api/v3/ticker/24hr",function
+(data){
+        console.log(data)
         for(var i=0;i<10;i++){
             // creates table row element that defines a row of cells in a table.
             var coinTr = document.createElement('tr')
-            // creates tabele head element
+            // creates tabele head element, adds correct attributes and classlists for tailwind
             var coinTh = document.createElement('th')
-            // adds the row attribute too cointh which defines the cell
-            coinTh.scope = "row"
-            
+            coinTh.scope = "col"
+            coinTh.classList.add('text-sm', 'font-medium', 'text-gray-900', 'px-6', 'py-4', 'text-left')
             var cointd = document.createElement('td')
-           // cointd.textContent = data
+            // cointd.textContent = data
             coinTh.textContent = data[i].symbol
             coinTr.appendChild(cointd)
             coinTr.appendChild(coinTh)
@@ -25,6 +18,5 @@ function getBinanceDaily() {
             tableBodyEl.appendChild(coinTr)
         }
         
+        
     })
-}
-getBinanceDaily()
