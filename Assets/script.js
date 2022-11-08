@@ -1,8 +1,18 @@
 var tableBodyEl = document.querySelector('tbody')
+var page = 1
+var indexStart = 0
+var indexEnd = 99
 $.get("https://api2.binance.com/api/v3/ticker/24hr",function
 (data){
         console.log(data)
-        for(var i=0;i<10;i++){
+        if(page == 1) {
+            indexStart=0;
+            indexEnd=99;
+        }else if(page == 2){
+            indexStart=100 
+            indexEnd=200
+        };
+        for(var i=indexStart;i<indexEnd;i++){
             // creates table row element that defines a row of cells in a table.
             var coinTr = document.createElement('tr')
             // creates tabele head element, adds correct attributes and classlists for tailwind
@@ -20,3 +30,6 @@ $.get("https://api2.binance.com/api/v3/ticker/24hr",function
         
         
     })
+
+    // on click event forward arrow next page: page + 1. back arrow page - 1
+    
