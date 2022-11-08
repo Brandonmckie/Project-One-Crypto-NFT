@@ -34,3 +34,5 @@ $.get("https://api2.binance.com/api/v3/ticker/24hr",function
         
         
     })
+
+    // on click event forward arrow next page: page + 1. back arrow page - 1
