@@ -30,6 +30,7 @@ function displaySymbols(query){
     coinTh.scope = "col"
     coinTh.classList.add('text-sm', 'font-medium', 'text-gray-900', 'px-6', 'py-4', 'text-left')
     var cointd = document.createElement('td')
+
     var coinprce = document.createElement('th')
     coinprce.classList.add('text-sm', 'font-medium', 'text-gray-900', 'px-6', 'py-4', 'text-left')
     var coinHiPrce = document.createElement('th')
