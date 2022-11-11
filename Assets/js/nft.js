@@ -6,54 +6,62 @@ fetch('https://api.coingecko.com/api/v3/nfts/list')
     for(var i=0;i<100;i++){
      fetch(`https://api.coingecko.com/api/v3/nfts/${data[i].id}`).then((response) => response.json()).then((nft) => {
         console.log(nft)
-
+        /*for(var y=0;y<100;y++){
+        var nft_id =[]
+        nft_id=nft.name
+        }*/
         var NFTTr = document.createElement('tr')
         var NFTTh = document.createElement('th')
         var NFTtd = document.createElement('td')
-        var NFT_price = document.createElement('th')
+        var NFTTh_name= document.createElement('th')
+        var NFT_volume = document.createElement('th')
         var NFT_openprice = document.createElement('th')
         var NFT_highprice = document.createElement('th')
+        //var NFT_totalsupply= document.createElement('th')
         var NFT_img= document.createElement('img')
         var NFT_img_column= document.createElement('th')
         NFTTh.scope = "col"
 
-        NFTTr.classList.add("nft-symbol")
+        NFTTr.classList.add("nft_")
+        NFTTh_name.classList.add('text-sm', 'font-medium', 'text-gray-900', 'px-6', 'py-4', 'text-left')
         NFTTh.classList.add('text-sm', 'font-medium', 'text-gray-900', 'px-6', 'py-4', 'text-left')
-        NFT_price.classList.add('text-sm', 'font-medium', 'text-gray-900', 'px-6', 'py-4', 'text-left')
-        //NFT_img.classList.add('text-sm', 'font-medium', 'text-gray-900', 'px-6', 'py-4', 'text-left')
+        NFT_volume.classList.add('text-sm', 'font-medium', 'text-gray-900', 'px-6', 'py-4', 'text-left')
         NFT_highprice.classList.add('text-sm', 'font-medium', 'text-gray-900', 'px-6', 'py-4', 'text-left')
         NFT_openprice.classList.add('text-sm', 'font-medium', 'text-gray-900', 'px-6', 'py-4', 'text-left')
-
-
+       // NFT_totalsupply.classList.add('text-sm', 'font-medium', 'text-gray-900', 'px-6', 'py-4', 'text-left')
+      
+        NFTTh_name.textContent=nft.name
         NFT_highprice.textContent = nft.market_cap.usd
-        NFT_price.textContent = nft.volume_24h.usd
+        NFT_volume.textContent = nft.volume_24h.usd
         NFT_openprice.textContent = nft.floor_price.usd
         NFT_img.src= nft.image.small
+       // NFT_totalsupply=nft.total_supply
         NFT_img_column.appendChild(NFT_img)
 
-        NFTTr.appendChild(NFTtd)
-        NFTTr.appendChild(NFT_img_column)
         NFTTr.appendChild(NFTTh)
-        NFTTr.appendChild(NFT_price)
+        NFTTr.appendChild(NFTTh_name)
+        NFTTr.appendChild(NFT_img_column)
         NFTTr.appendChild(NFT_highprice)
+        NFTTr.appendChild(NFT_volume)
         NFTTr.appendChild(NFT_openprice)
+       // NFTTr.appendChild(NFT_totalsupply)
         tableBodyEl.appendChild(NFTTr) 
-        //displaySymbols()
+       // displaySymbols()
+        
+
+        /*function displaySymbols(query){
+         for(var i=0;i<nft_id.length;i++){
+             if(!query || nft_id.toLowerCase().includes(query.toLowerCase())){
+             nftToDisplay.push(nft)
+             }
+             if(nftToDisplay.length == 100){
+             break;
+             }
+         }}*/
         
          
      });
-    /* function displaySymbols(query){
-      var nftToDisplay = []
-      $(".nft-symbol").remove()
-      for(var i=0;i<coins.length;i++){
-          if(!query || coins[i].symbol.toLowerCase().includes(query.toLowerCase())){
-          nftToDisplay.push(coins[i])
-          }
-          if(nftToDisplay.length == 25){
-          break;
-          }
-      }}
-     $('#searchBar').on("change", function(){
-      displaySymbols($(this).val())}) */
+     //$('#searchBar').on("change", function(){
+      //displaySymbols($(this).val())})
     
    }})
