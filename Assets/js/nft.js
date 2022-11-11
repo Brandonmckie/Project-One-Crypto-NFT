@@ -6,7 +6,7 @@ fetch('https://api.coingecko.com/api/v3/nfts/list')
     for(var i=0;i<100;i++){
      fetch(`https://api.coingecko.com/api/v3/nfts/${data[i].id}`).then((response) => response.json()).then((nft) => {
         console.log(nft)
-      
+
         var NFTTr = document.createElement('tr')
         var NFTTh = document.createElement('th')
         var NFTtd = document.createElement('td')
@@ -23,14 +23,14 @@ fetch('https://api.coingecko.com/api/v3/nfts/list')
         //NFT_img.classList.add('text-sm', 'font-medium', 'text-gray-900', 'px-6', 'py-4', 'text-left')
         NFT_highprice.classList.add('text-sm', 'font-medium', 'text-gray-900', 'px-6', 'py-4', 'text-left')
         NFT_openprice.classList.add('text-sm', 'font-medium', 'text-gray-900', 'px-6', 'py-4', 'text-left')
-      
+
 
         NFT_highprice.textContent = nft.market_cap.usd
         NFT_price.textContent = nft.volume_24h.usd
         NFT_openprice.textContent = nft.floor_price.usd
         NFT_img.src= nft.image.small
         NFT_img_column.appendChild(NFT_img)
-       
+
         NFTTr.appendChild(NFTtd)
         NFTTr.appendChild(NFT_img_column)
         NFTTr.appendChild(NFTTh)
